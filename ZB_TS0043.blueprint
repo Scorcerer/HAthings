@@ -68,10 +68,8 @@ blueprint:
 mode: restart
 max_exceeded: silent
 trigger:
-- platform: event
-  event_type: zha_event
-  event_data:
-    device_id: !input 'tuya_ts0043'
+  - platform: state
+    entity_id: !input remote
 action:
   - variables:
       command: '{{ trigger.event.data.command }}'
