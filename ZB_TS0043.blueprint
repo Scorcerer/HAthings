@@ -4,11 +4,11 @@ blueprint:
     ZHA events.
   domain: automation
   input:
-    tuya_ts0043:
+    remote:
       name: Tuya TS0043 3 button remote
       description: Tuya TS0043 3 button remote to use
       selector:
-        device:
+        entity:
           domain: sensor
           integration: mqtt
     button_one_single_press:
