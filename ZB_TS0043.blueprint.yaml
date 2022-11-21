@@ -65,40 +65,42 @@ blueprint:
       default: []
       selector:
         action: {}
+
 mode: restart
 max_exceeded: silent
+
 trigger:
   - platform: state
     entity_id: !input remote
+
 action:
   - variables:
-      command: '{{ trigger.event.data.command }}'
-      endpoint_id: '{{ trigger.event.data.endpoint_id }}'
+      event: "{{ trigger.to_state.state }}"
   - choose:
     - conditions:
-        - '{{ command == ''remote_button_short_press'' and endpoint_id == 1 }}'
+        - "{{ event == 1_single }}"
       sequence: !input 'button_one_single_press'
     - conditions:
-        - '{{ command == ''remote_button_double_press'' and endpoint_id == 1 }}'
+        - "{{ event == 1_double }}"
       sequence: !input 'button_one_double_press'
     - conditions:
-        - '{{ command == ''remote_button_long_press'' and endpoint_id == 1 }}'
+        - "{{ event == 1_hold }}"
       sequence: !input 'button_one_long_press'
     - conditions:
-        - '{{ command == ''remote_button_short_press'' and endpoint_id == 2 }}'
+        - "{{ event == 2_single }}"
       sequence: !input 'button_two_single_press'
     - conditions:
-        - '{{ command == ''remote_button_double_press'' and endpoint_id == 2 }}'
+        - "{{ event == 2_double }}"
       sequence: !input 'button_two_double_press'
     - conditions:
-        - '{{ command == ''remote_button_long_press'' and endpoint_id == 2 }}'
+        - "{{ event == 2_hold }}"
       sequence: !input 'button_two_long_press'
     - conditions:
-        - '{{ command == ''remote_button_short_press'' and endpoint_id == 3 }}'
+        - "{{ event == 3_single }}"
       sequence: !input 'button_three_single_press'
     - conditions:
-        - '{{ command == ''remote_button_double_press'' and endpoint_id == 3 }}'
+        - "{{ event == 3_double }}"
       sequence: !input 'button_three_double_press'
     - conditions:
-        - '{{ command == ''remote_button_long_press'' and endpoint_id == 3 }}'
+        - "{{ event == 3_hold }}"
       sequence: !input 'button_three_long_press'
