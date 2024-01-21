@@ -1,0 +1,164 @@
+blueprint:
+  name: x16keyboard-esp
+  description: 'Control anything using x16 capacitive keyboard'
+  domain: automation
+  input:
+    remote:
+      name: Keypad
+      description: Device in question
+      selector:
+        entity:
+          domain: sensor
+    button_1:
+      name: Button 1
+      description: Action to run on Button 01
+      default: []
+      selector:
+        action: {}
+    button_2:
+      name: Button 2
+      description: Action to run on Button 02
+      default: []
+      selector:
+        action: {}
+    button_3:
+      name: Button 3
+      description: Action to run on Button 03
+      default: []
+      selector:
+        action: {}
+    button_4:
+      name: Button 4
+      description: Action to run on Button 04
+      default: []
+      selector:
+        action: {}
+    button_5:
+      name: Button 5
+      description: Action to run on Button 05
+      default: []
+      selector:
+        action: {}
+    button_6:
+      name: Button 6
+      description: Action to run on Button 06
+      default: []
+      selector:
+        action: {}
+    button_7:
+      name: Button 7
+      description: Action to run on Button 07
+      default: []
+      selector:
+        action: {}
+    button_8:
+      name: Button 8
+      description: Action to run on Button 08
+      default: []
+      selector:
+        action: {}
+    button_9:
+      name: Button 9
+      description: Action to run on Button 09
+      default: []
+      selector:
+        action: {}
+    button_10:
+      name: Button 10
+      description: Action to run on Button 10
+      default: []
+      selector:
+        action: {}
+    button_11:
+      name: Button 11
+      description: Action to run on Button 11
+      default: []
+      selector:
+        action: {}
+    button_12:
+      name: Button 12
+      description: Action to run on Button 12
+      default: []
+      selector:
+        action: {}
+    button_13:
+      name: Button 13
+      description: Action to run on Button 13
+      default: []
+      selector:
+        action: {}
+    button_14:
+      name: Button 14
+      description: Action to run on Button 14
+      default: []
+      selector:
+        action: {}
+    button_15:
+      name: Button 15
+      description: Action to run on Button 15
+      default: []
+      selector:
+        action: {}
+    button_16:
+      name: Button 16
+      description: Action to run on Button 16
+      default: []
+      selector:
+        action: {}
+mode: restart
+max_exceeded: silent
+trigger:
+- platform: state
+  entity_id: !input 'remote'
+action:
+- variables:
+    event: '{{ trigger.to_state.state }}'
+- choose:
+  - conditions:
+    - '{{ event == 1 }}'
+    sequence: !input 'button_1'
+  - conditions:
+    - '{{ event == 2 }}'
+    sequence: !input 'button_2'
+  - conditions:
+    - '{{ event == 3 }}'
+    sequence: !input 'button_3'
+  - conditions:
+    - '{{ event == 4 }}'
+    sequence: !input 'button_4'
+  - conditions:
+    - '{{ event == 5 }}'
+    sequence: !input 'button_5'
+  - conditions:
+    - '{{ event == 6 }}'
+    sequence: !input 'button_6'
+  - conditions:
+    - '{{ event == 7 }}'
+    sequence: !input 'button_7'
+  - conditions:
+    - '{{ event == 8 }}'
+    sequence: !input 'button_8'
+  - conditions:
+    - '{{ event == 9 }}'
+    sequence: !input 'button_9'
+  - conditions:
+    - '{{ event == 10 }}'
+    sequence: !input 'button_10'
+  - conditions:
+    - '{{ event == 11 }}'
+    sequence: !input 'button_11'
+  - conditions:
+    - '{{ event == 12 }}'
+    sequence: !input 'button_12'
+  - conditions:
+    - '{{ event == 13 }}'
+    sequence: !input 'button_13'
+  - conditions:
+    - '{{ event == 14 }}'
+    sequence: !input 'button_14'
+  - conditions:
+    - '{{ event == 15 }}'
+    sequence: !input 'button_15'
+  - conditions:
+    - '{{ event == 16 }}'
+    sequence: !input 'button_16'
